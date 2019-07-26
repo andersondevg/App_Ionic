@@ -15,8 +15,8 @@
             <img src="./assets/porn.png">
           </ion-avatar>
           <ion-label>
-            <h2>{{filme?.groupTitle}}</h2>
-            <h3>{{getNameFormat(filme?.name)}}</h3>            
+            <h2>{{filme?.groupTitle | uppercase }}</h2>
+            <h3>{{getNameFormat(filme?.name) | uppercase }}</h3>            
         </ion-label>              
       </ion-item>      
     </ion-list>

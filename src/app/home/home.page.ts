@@ -32,7 +32,10 @@ export class HomePage {
   }
 
   filtrar(){
-    console.log(this.texto);
+    if(!!this.texto)
+      this.filmes = this.filmes.filter(filme => filme.name.toLowerCase().includes(this.texto.toLowerCase()));
+    else
+      this.consultar();
   }
 
 }

@@ -9,18 +9,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-card>
     <ion-item>
-      <ion-label>
-        <h2>{{filme?.name}}</h2>
-      </ion-label>
+      <iframe width="530" height="315" class="controls"
+          [src]="getSafeUrl(filme?.url)" frameborder="0" 
+          allow="autoplay; encrypted-media" allowfullscreen>
+      </iframe>
     </ion-item>
-    
-    <ion-item>
-        <iframe width="560" height="315" class="controls"
-        [src]="getSafeUrl(filme?.url)" frameborder="0" 
-        allow="autoplay; encrypted-media" allowfullscreen>
-      </iframe> 
-    </ion-item>                                           
-  </ion-list>
+    <ion-card-header>      
+      <ion-card-title style="text-align: center;">{{filme?.name | uppercase}}</ion-card-title>
+    </ion-card-header>    
+  </ion-card>
 </ion-content>
