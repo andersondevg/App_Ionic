@@ -1,12 +1,23 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Filmes IPTV
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-input [(ngModel)]="nome" value="custom"></ion-input>
-  <ion-button (click)="showAlert()" color="primary">Primary</ion-button>  
+  <ion-input [(ngModel)]="texto" style="border-bottom: 1px solid;"></ion-input>
+  <ion-button (click)="filtrar()" color="primary" expand="full" fill="outline">Filtrar</ion-button>    
+  <ion-list>     
+      <ion-item *ngFor="let filme of filmes" [routerLink]="[ '/detail', filme.id ]">   
+        <ion-avatar slot="start">
+            <img src="./assets/porn.png">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{filme?.groupTitle}}</h2>
+            <h3>{{getNameFormat(filme?.name)}}</h3>            
+        </ion-label>              
+      </ion-item>      
+    </ion-list>
 </ion-content>

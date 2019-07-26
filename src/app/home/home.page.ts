@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { IptvService } from '../services/iptv.service';
+import { Iptv } from '../models/iptv';
 
 @Component({
   selector: 'app-home',
@@ -7,28 +8,31 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  nome: String;
+  texto: String;
+  filmes: Iptv[];
 
-  constructor(public alertController: AlertController) {    
+  constructor(private iptvService: IptvService) {         
   }
 
   ngOnInit(): void {
-    this.nome = '';
+    this.texto = '';
+    this.consultar();
   }
 
-  showAlert(){
-    this.presentAlert();
+  consultar(){
+    this.iptvService.getAll().subscribe(
+      values => {
+        this.filmes = values;
+      }
+    );
   }
 
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: `${this.nome}`,
-      buttons: ['OK']
-    });
+  getNameFormat(name:String){
+    return name.substring(0, 22).concat('...');
+  }
 
-    await alert.present();
+  filtrar(){
+    console.log(this.texto);
   }
 
 }
